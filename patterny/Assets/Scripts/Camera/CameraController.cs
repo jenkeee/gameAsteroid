@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraController : MonoBehaviour
+{
+    public Transform Player;
+    public float xAxis;
+    public float yAxis;
+    public float zAxis;
+    public float folowSpeed;
+
+    void Update()
+    {
+        if (false)
+        { }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Player.position + new Vector3(xAxis, yAxis, zAxis), folowSpeed * Time.deltaTime);
+        }
+        transform.LookAt(Player.transform.position);
+    }
+}
