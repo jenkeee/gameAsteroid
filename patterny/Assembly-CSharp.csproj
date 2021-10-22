@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Player\MovementController.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuScript.cs" />
     <Compile Include="Assets\Scripts\EnemyOther\Asteroids\ScriptAster.cs" />
+    <Compile Include="Assets\Scripts\UI\MouseAimReticle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

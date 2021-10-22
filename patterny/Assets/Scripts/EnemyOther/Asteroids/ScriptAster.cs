@@ -25,6 +25,10 @@ public class ScriptAster : MonoBehaviour
     [Tooltip("минимальная Z спавна астероидов// -300")]
     int startPosAst = -300;
 
+    float Xaxis= 0;
+    float Yaxis= 0;
+    float Zaxis= 0;
+
     private void Awake()
     {
         for (int i = 0; i < asteroidCount; i++)
@@ -79,14 +83,32 @@ public class ScriptAster : MonoBehaviour
     {
 
         Vector3 move = new Vector3(0, 0, asteroidSpeed * Time.deltaTime);
+
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).position += move;
+            if (i % 2 == 0)
+            {
+                Xaxis += 0.1f * Time.deltaTime;
+                Yaxis += 0.1f * Time.deltaTime; 
+                Zaxis += 0.1f * Time.deltaTime; 
+
+                transform.GetChild(i).position += move;        
+            transform.GetChild(i).rotation = Quaternion.Euler(Xaxis, Yaxis, Zaxis);             
+
+            }
+            else {
+                Xaxis += 0.2f * Time.deltaTime; 
+                Yaxis += 0.2f * Time.deltaTime;
+                Zaxis += 0.2f * Time.deltaTime;
+                transform.GetChild(i).position += move/2;
+                transform.GetChild(i).rotation = Quaternion.Euler(Xaxis, Yaxis, Zaxis);                
+            }
+
+
             if (transform.GetChild(i).position.z > 10)
             {
                 transform.GetChild(i).localScale = RandomScaleWithAddiction();
                 transform.GetChild(i).position = SetPosToStart();
-                // добавим ротации чтоб красивше
             }
         }
         //добавляем астероид, если понадобится 
