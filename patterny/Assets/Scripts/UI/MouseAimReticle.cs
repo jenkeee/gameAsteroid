@@ -6,7 +6,7 @@ public class MouseAimReticle : MonoBehaviour
 {
     private Camera _camera;
 
-    Vector2 mouseMove;
+    Vector3 mouseMove;
     public float sensetiveX;
     public float sensetiveY;
 
@@ -22,7 +22,8 @@ public class MouseAimReticle : MonoBehaviour
     {
         mouseMove.x += Input.GetAxis("Mouse X")* sensetiveX;
         mouseMove.y += Input.GetAxis("Mouse Y")* sensetiveY;
-        transform.GetChild(0).position = mouseMove;
+        mouseMove.z = 700; // без глубины не работает Camera.main.ScreenToWorldPoint(dirTotarget);
+        transform.GetChild(0).position = mouseMove;        
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             Cursor.lockState = CursorLockMode.Locked;
