@@ -123,25 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &234311755 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 899060654139626887, guid: 076804608789e4847a376b5df5341241, type: 3}
-  m_PrefabInstance: {fileID: 4329533768287303031}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &234311757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234311755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6db23f4e9df33343967d8cd24b12283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocketCount: 10
-  rocketPrefab: {fileID: 202909479244436219, guid: 5f9251215d438b143a1ac49323e31b21, type: 3}
 --- !u!1 &460624284
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,24 +203,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4329533767484199466, guid: 076804608789e4847a376b5df5341241, type: 3}
   m_PrefabInstance: {fileID: 4329533768287303031}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &915182863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2271851837409512998, guid: 076804608789e4847a376b5df5341241, type: 3}
-  m_PrefabInstance: {fileID: 4329533768287303031}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &915182865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915182863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa518209b65d60479762b6dadd2f34c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocketSpeed: 50
 --- !u!1 &948694109
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensetiveX: 5
   sensetiveY: 5
+  deepOfReticle: 30
 --- !u!1 &1157125475
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +620,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1794152563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4329533767484199467, guid: 076804608789e4847a376b5df5341241, type: 3}
+  m_PrefabInstance: {fileID: 4329533768287303031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794152566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794152563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e53ff666e5755646a0926bef9031fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905132977
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,9 +873,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4329533767484199465, guid: 076804608789e4847a376b5df5341241, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+    - target: {fileID: 234311757, guid: 076804608789e4847a376b5df5341241, type: 3}
+      propertyPath: rocketCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 915182865, guid: 076804608789e4847a376b5df5341241, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 915182865, guid: 076804608789e4847a376b5df5341241, type: 3}
+      propertyPath: rocketSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4329533767484199466, guid: 076804608789e4847a376b5df5341241, type: 3}
       propertyPath: m_RootOrder
@@ -944,9 +933,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7547723757745735070, guid: 076804608789e4847a376b5df5341241, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
+    - target: {fileID: 8444636761108645345, guid: 076804608789e4847a376b5df5341241, type: 3}
+      propertyPath: rocketSpeed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 076804608789e4847a376b5df5341241, type: 3}

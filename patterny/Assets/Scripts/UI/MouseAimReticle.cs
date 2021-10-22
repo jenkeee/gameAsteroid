@@ -9,7 +9,7 @@ public class MouseAimReticle : MonoBehaviour
     Vector3 mouseMove;
     public float sensetiveX;
     public float sensetiveY;
-
+    public int deepOfReticle;
     private void Start()
     {
         _camera = Camera.main;
@@ -22,7 +22,8 @@ public class MouseAimReticle : MonoBehaviour
     {
         mouseMove.x += Input.GetAxis("Mouse X")* sensetiveX;
         mouseMove.y += Input.GetAxis("Mouse Y")* sensetiveY;
-        mouseMove.z = 700; // без глубины не работает Camera.main.ScreenToWorldPoint(dirTotarget);
+
+        mouseMove.z = deepOfReticle; // без глубины не работает Camera.main.ScreenToWorldPoint(dirTotarget);
         transform.GetChild(0).position = mouseMove;        
 
         if (Input.GetKeyDown(KeyCode.Mouse0))

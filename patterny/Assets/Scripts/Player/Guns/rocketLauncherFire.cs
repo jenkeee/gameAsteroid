@@ -34,24 +34,12 @@ public class rocketLauncherFire : MonoBehaviour
             Vector3 dirTotarget = _target.position - transform.GetChild(curentLauncher).position;            
             Vector3 dirTotargetCamera = Camera.main.ScreenToWorldPoint(dirTotarget);
             dirTotargetCamera = dirTotargetCamera.normalized;
-            Debug.Log(dirTotargetCamera);
+
             curentBullet.LookAt(dirTotargetCamera);
             curentBullet.GetComponent<Rigidbody>().AddForce(dirTotargetCamera * 1000 * Time.deltaTime * rocketSpeed) ;
 
             curentBulletIndex++;
             curentLauncher++;
-
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            for (int i = 0; i < _poolBullet.childCount; i++)
-            {
-                _poolBullet.GetChild(i).gameObject.SetActive(true);
-                _poolBullet.GetChild(i).transform.position = transform.GetChild(0).position+ Vector3.forward;
-                _poolBullet.GetChild(i).GetComponent<Rigidbody>().AddForce(Vector3.forward*10,ForceMode.Impulse);
-            }
-        }*/
-
     }
 }
