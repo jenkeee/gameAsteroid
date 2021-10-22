@@ -8,7 +8,7 @@ public class MovementController : MonoBehaviour
     float vertical;
     public float speed = 1;
 
-    void FixedUpdate()
+    void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
