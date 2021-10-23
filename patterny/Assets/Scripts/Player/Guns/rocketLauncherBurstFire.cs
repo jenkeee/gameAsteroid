@@ -36,6 +36,7 @@ public class rocketLauncherBurstFire : MonoBehaviour
                 _poolBullet.GetChild(i).transform.position = transform.GetChild(curentLauncher).position + Vector3.back / 5 + new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
                 _poolBullet.GetChild(i).rotation = Quaternion.Euler(90, 0, 0);
                 _poolBullet.GetChild(i).GetComponent<Rigidbody>().velocity = Vector3.zero;
+                _poolBullet.GetChild(i).GetComponent<Rigidbody>().freezeRotation = true;
                 _poolBullet.GetChild(i).LookAt(dirTotargetCamera);
                 _poolBullet.GetChild(i).GetComponent<Rigidbody>().AddForce(dirTotargetCamera * 1000 * Time.deltaTime * rocketSpeed);                
             }

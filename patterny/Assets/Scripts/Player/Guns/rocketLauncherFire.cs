@@ -36,6 +36,8 @@ public class rocketLauncherFire : MonoBehaviour
             dirTotargetCamera = dirTotargetCamera.normalized;
 
             curentBullet.LookAt(dirTotargetCamera);
+            //curentBullet.GetComponent<Rigidbody>().constraints = ~ RigidbodyConstraints.FreezeRotationX; // ~ . даст фриз rotation во все оси кроме указанной  ~ это логическое отрицание подобно !
+            curentBullet.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;       
             curentBullet.GetComponent<Rigidbody>().AddForce(dirTotargetCamera * 1000 * Time.deltaTime * rocketSpeed) ;
 
             curentBulletIndex++;

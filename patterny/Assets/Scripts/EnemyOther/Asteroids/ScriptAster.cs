@@ -46,6 +46,7 @@ public class ScriptAster : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
             transform.GetChild(i).localScale = RandomScaleWithAddiction();
             transform.GetChild(i).position = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), Random.Range(-500, -900));
+            transform.GetChild(i).gameObject.layer = 6;
         }
 
     }
