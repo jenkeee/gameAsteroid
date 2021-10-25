@@ -8,8 +8,21 @@ public class MovementController : MonoBehaviour
     float vertical;
     public float speed = 1;
 
+    private Transform _target;
+
+    private void Start()
+    {
+        _target = Object.FindObjectOfType<MouseAimReticle>().transform.GetChild(0).transform;
+    }
+
     void Update()
     {
+      /*переведем скрин позицию прицела в игровые корды*/  Vector3 dirTotarget = _target.position - transform.position;
+        Vector3 dirTotargetCamera = Camera.main.ScreenToWorldPoint(dirTotarget);
+        dirTotargetCamera = -dirTotargetCamera.normalized;
+
+        transform.LookAt(dirTotargetCamera);
+
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 

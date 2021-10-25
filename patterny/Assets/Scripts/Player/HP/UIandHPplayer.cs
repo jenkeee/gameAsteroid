@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIandHPplayer : MonoBehaviour
 {
+
     int hp = 100;
     Vector2 hpRectSize;
 

@@ -36,6 +36,8 @@ public class ScriptAster : MonoBehaviour
             var obgAster = GameObject.Instantiate(asteroidPrefab, new Vector3(0, -1000, 0), Quaternion.identity).transform;
             obgAster.SetParent(transform);
             obgAster.name = $"Asteroid {i}";
+            obgAster.gameObject.AddComponent<Rigidbody>();
+            obgAster.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
@@ -44,7 +46,9 @@ public class ScriptAster : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
+            
             transform.GetChild(i).localScale = RandomScaleWithAddiction();
+            transform.GetChild(i).gameObject.AddComponent<SphereCollider>();
             transform.GetChild(i).position = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), Random.Range(-500, -900));
             transform.GetChild(i).gameObject.layer = 6;
         }
@@ -58,6 +62,8 @@ public class ScriptAster : MonoBehaviour
         float x = Random.Range(minSizeX, minSizeX + 8);
         float y;
         float z;
+        
+
         if (x >= minSizeX && x < minSizeX + 3)
         {
             y = Random.Range(minSizeX, minSizeX + 5);
@@ -78,7 +84,9 @@ public class ScriptAster : MonoBehaviour
         return new Vector3(x, y, z);
     }
     private Vector3 SetPosToStart()
-    { return new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), Random.Range(startPosAst, startPosAst - 400)); }
+    { 
+        return new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), Random.Range(startPosAst, startPosAst - 400)); 
+    }
 
     private void Update()
     {
@@ -93,22 +101,33 @@ public class ScriptAster : MonoBehaviour
                 Yaxis += 0.1f * Time.deltaTime; 
                 Zaxis += 0.1f * Time.deltaTime; 
 
-                transform.GetChild(i).position += move;        
-            transform.GetChild(i).rotation = Quaternion.Euler(Xaxis, Yaxis, Zaxis);             
-
+                transform.GetChild(i).GetComponent<Rigidbody>().position += move/2;        
+            transform.GetChild(i).rotation = Quaternion.Euler(Xaxis, Yaxis, Zaxis);
             }
             else {
                 Xaxis += 0.2f * Time.deltaTime; 
                 Yaxis += 0.2f * Time.deltaTime;
                 Zaxis += 0.2f * Time.deltaTime;
-                transform.GetChild(i).position += move/2;
+                transform.GetChild(i).GetComponent<Rigidbody>().position += move;
                 transform.GetChild(i).rotation = Quaternion.Euler(Xaxis, Yaxis, Zaxis);                
             }
 
 
             if (transform.GetChild(i).position.z > 10)
             {
+
+                Destroy(GetComponent<SphereCollider>());
+                transform.GetChild(i).GetComponent<Rigidbody>().velocity = Vector3.zero;
                 transform.GetChild(i).localScale = RandomScaleWithAddiction();
+                transform.GetChild(i).gameObject.AddComponent<SphereCollider>();
+                transform.GetChild(i).position = SetPosToStart();
+            }
+            else if (transform.GetChild(i).position.y < -200)
+            {
+                Destroy(GetComponent<SphereCollider>());
+                transform.GetChild(i).GetComponent<Rigidbody>().velocity = Vector3.zero;
+                transform.GetChild(i).localScale = RandomScaleWithAddiction();
+                transform.GetChild(i).gameObject.AddComponent<SphereCollider>();
                 transform.GetChild(i).position = SetPosToStart();
             }
         }
@@ -116,7 +135,7 @@ public class ScriptAster : MonoBehaviour
         if (false) // для теста Input.GetKeyDown(KeyCode.Space)
         {
             var obgAster = GameObject.Instantiate(asteroidPrefab, SetPosToStart(), Quaternion.identity).transform;
-            obgAster.SetParent(transform);
+            obgAster.SetParent(transform);            
             obgAster.name = $"Asteroid {transform.childCount-1}";
         }
     }
