@@ -1,0 +1,27 @@
+     IEnumerator Blinker(){
+         Color tmp = ThisSprite.color;
+         ThisSprite.color = tmp;
+         
+         
+         
+         tmp.a = 0;
+         yield return new WaitForSeconds (0.5f);
+         tmp.a = 255;
+         yield return new WaitForSeconds (1f);
+         tmp.a = 0;
+         yield return new WaitForSeconds (1.5f);
+         tmp.a = 200;
+         yield return new WaitForSeconds (2f);
+         tmp.a = 0;
+         yield return new WaitForSeconds (2.5f);
+         tmp.a = 155;
+         yield return new WaitForSeconds (3f);
+         tmp.a = 0;
+         yield return new WaitForSeconds (3.5f);
+         tmp.a = 105;
+         yield return new WaitForSeconds (4f);
+         tmp.a = 0;
+         
+         Character.SetActive(false);
+         StopCoroutine ("Blinker");
+     }

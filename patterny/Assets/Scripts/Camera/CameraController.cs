@@ -13,12 +13,9 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (false)
-        { }
-        else
-        {
+ 
             transform.position = Vector3.MoveTowards(transform.position, Player.position + new Vector3(xAxis, yAxis, zAxis), folowSpeed * Time.deltaTime);
-        }
+       
         transform.LookAt(Player.transform.position+ Vector3.up* yLookAt);
     }
 }

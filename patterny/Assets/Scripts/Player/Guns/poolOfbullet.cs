@@ -20,6 +20,7 @@ public class poolOfbullet : MonoBehaviour
             obgAster.name = $"rocket {i}";
             obgAster.gameObject.SetActive(false);
             obgAster.gameObject.AddComponent<Rigidbody>();
+            obgAster.gameObject.AddComponent<AimHelp>().enabled = false;
             obgAster.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             obgAster.GetComponent<Rigidbody>().useGravity = false;
         }
